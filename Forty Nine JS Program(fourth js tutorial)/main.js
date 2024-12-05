@@ -33,14 +33,43 @@ console.log("hello 3");
 // XMLHttpRequest
 // async await
 
-//
+//      ---- Promise ---
+/* Promise will be in three state
+- pending 
+- fulfilled
+- rejected
 
-// example of promise, then and catch
+if promise got fulfilled then statement will run
 
-// is the random number is less than 5 or greater then 5
+if promise got rejected catch statement will run
+*/
 
+// Promise will be used to take care of async code i.e. if we don't know hou much time will the async code take then we keep those code inside promise
+
+// example 1 of promise, then and catch
+let ansOfPromise1 = new Promise((res, rej) => {
+  // we know by default if condition is true so from this code rej() function will get returned which means promise is in reject state due to which catch statement will get executed
+  if (false) {
+    return res();
+  } else {
+    return rej();
+  }
+});
+
+ansOfPromise1
+  .then(function () {
+    console.log("promise got resolved");
+  })
+  .catch(function () {
+    console.log("promise got reject");
+  });
+
+// example 2 of promise, then and catch
+// is the random number less than 5 or greater then 5
+// here we store the result return by Promise in some variable
 var ans = new Promise(function (res, rej) {
   var number = Math.floor(Math.random() * 10);
+  // if generated number is less 5 promise is resolved otherwise promise is reject
   if (number < 5) {
     return res();
   } else {
@@ -57,7 +86,3 @@ ans
   .catch(() => {
     console.log("generated number is greater than five");
   });
-
-// here Promise will be in three state pending, reslove or reject state. First Promise will be in pending state and when it get executed it will be either in resove state or reject state. If Promise get resolve then then will get executed otherwise catch will get executed.
-
-//
